@@ -19,7 +19,7 @@ for i in range(0,1000):
 net = nn.NeuralNetwork(layer_sizes)
 
 # evaluate performance without training
-net.print_accuracy(test_data,test_labels)
+net.print_accuracy_bool(test_data,test_labels)
 net.calculate_average_cost(test_data,test_labels)
 
 # first training session
@@ -42,7 +42,7 @@ test_labels_mid = np.random.random((1000,1,1))
 for i in range(0,1000):
     test_labels_mid[i,0]=(test_data_mid[i,0]>0.5)^(test_data_mid[i,1]>0.5)
 
-net.print_accuracy(test_data_mid,test_labels_mid)
+net.print_accuracy_bool(test_data_mid,test_labels_mid)
 net.calculate_average_cost(test_data_mid,test_labels_mid)
 
 
@@ -64,7 +64,7 @@ for i in range(0,1000):
     test_labels_final[i,0]=(test_data_final[i,0]>0.5)^(test_data_final[i,1]>0.5)
 
 # evaluate performance after second training session
-net.print_accuracy(test_data_final,test_labels_final)
+net.print_accuracy_bool(test_data_final,test_labels_final)
 net.calculate_average_cost(test_data_final,test_labels_final)
 
 # plot learned function
