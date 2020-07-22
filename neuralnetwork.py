@@ -51,7 +51,7 @@ class NeuralNetwork:
     #     """
 
     #     # the input layer is the first activation layer
-    #     self.activations[0] = sample
+    #     self.activations[-1] = sample
 
     #     # forward propagation
     #     for i in range(self.num_layers - 1):
@@ -61,13 +61,19 @@ class NeuralNetwork:
 
     #     # the output layer is the final activation layer
 
-    #     return self.activations[-1]
+    #     return self.activations[0]
 
-    def print_accuracy(self, samples, labels):
+    def print_accuracy_bool(self, samples, labels):
         # generate set of predictions for whether function is ON (>0.5) or OFF
         predictions = [self.feedforward(sample)>0.5 for sample in samples]
         num_correct = sum(p==l for p, l in zip(predictions, labels))
         print("{0}/{1} accuracy: {2}%".format(num_correct, len(samples), (num_correct / len(samples)) * 100))
+    def print_accuracy(self, samples, labels):
+        # generate set of predictions for whether function is ON (>0.5) or OFF
+        predictions = [self.feedforward(sample) for sample in samples]
+        num_correct = sum([np.argmax(p) == np.argmax(l) for p, l in zip(predictions, labels)])
+        print("{0}/{1} accuracy: {2}%".format(num_correct, len(samples), (num_correct / len(samples)) * 100))
+    
         
     def calculate_average_cost(self, samples, labels):
         predictions = self.feedforward(samples)
