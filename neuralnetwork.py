@@ -41,27 +41,6 @@ class NeuralNetwork:
     # WORK IN PROGRESS - Run through network backwards to generate inputs
     # from outputs
     
-    # def feedbackward(self, sample):
-    #     """
-    #     Feed backward through the network
-        
-    #     input vector of samples (which are themselves vectors)
-        
-    #     return vector of activations
-    #     """
-
-    #     # the input layer is the first activation layer
-    #     self.activations[-1] = sample
-
-    #     # forward propagation
-    #     for i in range(self.num_layers - 1):
-    #         # z is 'weighted input'
-    #         z = np.matmul(self.weights[i], self.activations[i]) + self.biases[i]
-    #         self.activations[i + 1] = self.activation_func(z)
-
-    #     # the output layer is the final activation layer
-
-    #     return self.activations[0]
 
     def print_accuracy_bool(self, samples, labels):
         # generate set of predictions for whether function is ON (>0.5) or OFF
@@ -83,6 +62,7 @@ class NeuralNetwork:
     def predict_test(self, samples):
         predictions = [self.feedforward(sample) for sample in samples]
         return predictions
+    
     
     def train_network(self, training_inputs, training_labels, generations, batch_size, learning_rate):
         """
@@ -171,6 +151,9 @@ class NeuralNetwork:
             # but it is implemented this way for clarity
 
         return bias_deltas, weight_deltas
+    
+    def get_wb(self):
+        return self.weights, self.biases
 
     @staticmethod
     def activation_func(z):
