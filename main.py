@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # specify the layers, first layer should be 2 for inputs to boolean function, output is only a single layer
-layer_sizes = (2,16,1)
+layer_sizes = (2,3,4,1)
 
 # generate initial test data, 1000 pairs of values in [0,1]
 test_data = np.random.random((1000,2,1))

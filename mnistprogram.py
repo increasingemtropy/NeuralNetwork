@@ -35,7 +35,7 @@ net.print_accuracy(test_set_images, test_set_labels)
 net.calculate_average_cost(test_set_images, test_set_labels)
 
 # first training session
-net.train_network(training_set_images, training_set_labels, 2, 10, 4.0)
+net.train_network(training_set_images, training_set_labels, 4, 10, 4.0)
 
 # evaluate performance after first training session
 net.print_accuracy(test_set_images, test_set_labels)
